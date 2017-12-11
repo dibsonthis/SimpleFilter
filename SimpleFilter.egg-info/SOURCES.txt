@@ -1,3 +1,5 @@
+README.md
+setup.cfg
 setup.py
 SimpleFilter/__init__.py
 SimpleFilter/test.py
