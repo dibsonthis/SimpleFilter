@@ -8,4 +8,7 @@ setup(name='SimpleFilter',
       author_email='adib.attie33@gmail.com',
       license='MIT',
       packages=['SimpleFilter'],
+      install_requires=[
+          'matplotlib', 'Pillow'
+      ],
       zip_safe=False)
