@@ -1,18 +1,18 @@
 # Example
 
-![Alt text](https://github.com/dibsonthis/SimpleFilter/blob/master/test.PNG "test.py")
+![Alt text](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/test.PNG "test.py")
 
-![H_Fig1](https://github.com/dibsonthis/SimpleFilter/blob/master/H_Fig1.png "H_Fig1")
+![H_Fig1](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/H_Fig1.png "H_Fig1")
 
-![H_Fig2](https://github.com/dibsonthis/SimpleFilter/blob/master/H_Fig2.png "H_Fig2")
+![H_Fig2](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/H_Fig2.png "H_Fig2")
 
-![H_Fig3](https://github.com/dibsonthis/SimpleFilter/blob/master/H_Fig3.png "H_Fig3")
+![H_Fig3](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/H_Fig3.png "H_Fig3")
 
-![V_Fig1](https://github.com/dibsonthis/SimpleFilter/blob/master/V_Fig1.png "V_Fig1")
+![V_Fig1](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/V_Fig1.png "V_Fig1")
 
-![V_Fig2](https://github.com/dibsonthis/SimpleFilter/blob/master/V_Fig2.png "V_Fig2")
+![V_Fig2](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/V_Fig2.png "V_Fig2")
 
-![V_Fig3](https://github.com/dibsonthis/SimpleFilter/blob/master/V_Fig3.png "V_Fig3")
+![V_Fig3](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/V_Fig3.png "V_Fig3")
 
 # Dependencies
 
