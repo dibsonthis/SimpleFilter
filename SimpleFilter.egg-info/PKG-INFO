@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: SimpleFilter
+Version: 0.1
+Summary: SimpleFilter is a module that provides the tools necessary to build a convolutional classification network.
+Home-page: https://github.com/dibsonthis/SimpleFilter
+Author: Adib Attie
+Author-email: adib.attie33@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
