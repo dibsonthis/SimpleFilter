@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='SimpleFilter',
-      version='0.1',
+      version='0.11',
       description='SimpleFilter is a module that provides the tools necessary to build a convolutional classification network.',
       url='https://github.com/dibsonthis/SimpleFilter',
       author='Adib Attie',

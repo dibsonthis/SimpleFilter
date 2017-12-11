@@ -7,4 +7,5 @@ SimpleFilter.egg-info/PKG-INFO
 SimpleFilter.egg-info/SOURCES.txt
 SimpleFilter.egg-info/dependency_links.txt
 SimpleFilter.egg-info/not-zip-safe
+SimpleFilter.egg-info/requires.txt
 SimpleFilter.egg-info/top_level.txt
