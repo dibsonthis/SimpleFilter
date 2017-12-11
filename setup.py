@@ -9,6 +9,6 @@ setup(name='SimpleFilter',
       license='MIT',
       packages=['SimpleFilter'],
       install_requires=[
-          'matplotlib', 'Pillow'
+          'matplotlib', 'Pillow', 'requests',
       ],
       zip_safe=False)
