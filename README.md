@@ -4,7 +4,7 @@ SimpleFilter is a module that provides the tools necessary to build a convolutio
 
 # Installation
 
-pip install SimpleFilter
+	pip install SimpleFilter
 
 # Example
 
