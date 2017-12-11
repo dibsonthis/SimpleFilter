@@ -24,9 +24,14 @@ SimpleFilter is a module that provides the tools necessary to build a convolutio
 
 # Dependencies
 
-* matplotlib (pip install matplotlib)
-* PIL (pip install Pillow)
-* requests (pip install requests)
+Installing through pip will also install all dependencies, however if for some reason they do not come through, you can install them manually as per below:
+
+## matplotlib
+	pip install matplotlib
+## PIL
+	pip install Pillow
+## requests
+	pip install requests
 
 <h1> How to use SimpleFilter: </h1>
 
@@ -49,50 +54,50 @@ SimpleFilter is a module that provides the tools necessary to build a convolutio
 	
 # SimpleFilter Functions
 
-SimpleFilter.create(size, outer=-0.1, inner=1, rand=0)
+<b>SimpleFilter.<i>create</b>(size, outer=-0.1, inner=1, rand=0)</i>
 	Creates a size x size array, mainly used to create basic filters which can then be styled using the SimpleFilter.style function
 -	Size: Size of the filter [size x size]
 -	Outer: Integer of all except the middle cell
 -	Inner: Integer of middle cell
 -	Rand: Accepts list of integers to randomize cells
 
-SimpleFilter.load(fpath, size=None, filter=False, convert=’L’)
+<b>SimpleFilter.<i>load</b>(fpath, size=None, filter=False, convert=’L’)</i>
 	Loads an image of any type using the PIL module and transforms it into an array that the SimpleFilter class can work with. Can also load images to be used as filters. Resizing images on load time will increase efficiency and speed of convolutions
 -	Fpath: Image file path
 -	Size: Accepts a list of width and height [w,h]. None loads image in actual size
 -	Filter: When True replaces all cells of value 255 with 1 and all cells of value 0 with -1
 -	Convert: Accepts PIL conversion type. ‘1’ loads image in black (255) and white (0)
 
-SimpleFilter.randomize(filter, rand=[-0.1,1])
+<b>SimpleFilter<i>.randomize</b>(filter, rand=[-0.1,1])</i>
 	Randomizes a filter using a list of integers. Rand lists are not limited to two numbers, however convolution with filters that have varying numbers may yield odd results
 -	Filter: Filter to be randomized
 -	Rand: Accepts list of integers to randomize cells
 
-SimpleFilter.prep(array, filter, pad=0)
+<b>SimpleFilter.<i>prep</b>(array, filter, pad=0)</i>
 	Prepares an image to be convoluted or mutated by padding all four sides of the array with any number provided. The padding is calculated based on each filter and thus larger filters will create a large amount of padding which will increase computation time
 -	Array: Image array to be padded
 -	Filter: Padding is created relative to the filter size
 -	Pad: Integer that the padding is made of
 
-SimpleFilter.unprep(array,filter)
+<b>SimpleFilter.<i>unprep</b>(array,filter)</i>
 	Removes the padding from an image that has been fed through the SimpleFilter.prep function. Always make sure to unprep an image using the same filter that was used to prep it, otherwise the unprep function could distort or crop the image unintentionally
 -	Array: Image array to be unpadded
 -	Filter: Padding is removed relative to the filter size
 
-SimpleFilter.conv(array, filter)
+<b>SimpleFilter.<i>conv</b>(array, filter)</i>
 	Runs a single convolution on an image using a provided filter. This function is used as the basis of the mutations performed in the SimpleFilter.mut function
 -	Array: Image array to be convoluted
 -	Filter: Filter to be used for convolution
 
-SimpleFilter.pool(array)
+<b>SimpleFilter.<i>pool</b>(array)</i>
 	Performs a max pooling function of size=2 and stride=2 on an image reducing it to half its original size
 -	Array: Array to be pooled
 
-SimpleFilter.rectlin(array)
+<b>SimpleFilter.<i>rectlin</b>(array)</i>
 	Performs a rectilinear function on each cell in the image, changing all negative numbers into 0 whilst keeping any other number unchanged
 -	Array: Array for which a rectilinear layer will be applied
 
-SimpleFilter.mut(array, filter, levels=1, plot=False, plotall=False, col=’Greys_r’, rand=[-0.1,1], r=False, pool=False, rectlin=False)
+<b>SimpleFilter.<i>mut</b>(array, filter, levels=1, plot=False, plotall=False, col=’Greys_r’, rand=[-0.1,1], r=False, pool=False, rectlin=False)</i>
 	Mut stands for mutation and is a SimpleFilter vernacular for multilayered convolution. It uses the SimpleFilter.conv function to perform multiple convolutions or mutation on an image using a single provided filter
 -	Array: Array to be mutated
 -	Filter: Filter to be used for mutation
@@ -105,7 +110,7 @@ SimpleFilter.mut(array, filter, levels=1, plot=False, plotall=False, col=’Grey
 -	Pool: Applies a pooling layer after every convolution
 -	Rectlin: Applies a Rectilinear layer after every convolution
 
-SimpleFilter.cycle(array, filters, levels=1, pool=True, rectlin=True, col='Greys_r', plot=False, plotall=True, flat=False)
+<b>SimpleFilter.<i>cycle</b>(array, filters, levels=1, pool=True, rectlin=True, col='Greys_r', plot=False, plotall=True, flat=False)</i>
 	Cycles through a list of provided filters and performs multiple convolutions on or mutates an image using each filter and returns a list of arrays (images)
 -	Array: Array to be cycled
 -	Filters: Accepts a list of filters to cycle through
@@ -117,7 +122,7 @@ SimpleFilter.cycle(array, filters, levels=1, pool=True, rectlin=True, col='Greys
 -	Plotall: If True, plots all mutations
 -	Flat: If True, returns a flattened list that can be used in the SimpleFilter.euc function
 
-SimpleFilter.style(filter, front=1, back=-0.1, x=None, y=None, s=None, n= False)
+<b>SimpleFilter.<i>style</b>(filter, front=1, back=-0.1, x=None, y=None, s=None, n= False)</i>
 	Allows basic styling of a created filter or array. Mainly used to create basic filters such as horizontal lines, vertical lines and diagonal lines. A filter can go through the style function numerous times and if n is False, will append each style to the existing styled filter
 -	Filter: Filter to be styled
 -	Front: Integer to be applied to the styled areas
@@ -127,26 +132,30 @@ SimpleFilter.style(filter, front=1, back=-0.1, x=None, y=None, s=None, n= False)
 -	S: Special function, allows the creation of diagonal filters using the keywords ‘rl’ for right to left diagonal or ‘lr’ for left to right diagonal
 -	N: If True, replaces all the cells in the filter with the back variable before styling to ensure a blank slate
 
-SimpleFilter.flat(conv_layers):
+<b>SimpleFilter.<i>flat</b>(conv_layers)</i>
 	Flattens a list of images into a single list of features to be used in the SimpleFilter.euc function
 -	Conv_layers: A list of images (arrays) returned by the SimpleFilter.cycle function
-SimpleFilter.euc(a, b)
+
+<b>SimpleFilter.<i>euc</b>(a, b)</i>
 	Performs Euclidean distance calculation on two flattened arrays (lists) to determine the degree of closeness
 -	A: List 1
 -	B: List 2
 
-SimpleClassifier documentation
-	The SimpleClassifier is a k-nearest neighbor classifier that comes pre-packaged in the SimpleFilter module – It is optimized to be used with the SimpleFilter mutations, however any classifier of choice can be used instead with some modification
+# SimpleClassifier Documentation
 
-SimpleClassifier.fit(train_features, train_labels)
+The SimpleClassifier is a k-nearest neighbor classifier that comes pre-packaged in the SimpleFilter module – It is optimized to be used with the SimpleFilter mutations, however any classifier of choice can be used instead with some modification
+
+# SimpleClassifier Functions
+
+<b>SimpleClassifier.<i>fit</b>(train_features, train_labels)</i>
 	Captures the training features and their corresponding labels
 -	Train_features: The training data set
 -	Train_Labels: The training labels
 
-SimpleClassifier.predict(test)
+<b>SimpleClassifier<i>.predict</b>(test)</i>
 	Performs a prediction using the SimpleFilter.euc function to determine which label closest fits the test image
 -	Test: Image to perform the prediction test on
 
-simple_filters: A list of four 3x3 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
+<b>simple_filters:</b> A list of four 3x3 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
 
-simple_filters5x5: A list of four 5x5 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
+<b>simple_filters5x5:</b> A list of four 5x5 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
