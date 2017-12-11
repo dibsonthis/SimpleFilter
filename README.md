@@ -1,3 +1,11 @@
+# SimpleFilter v.1.0 Documentation
+
+SimpleFilter is a module that provides the tools necessary to build a convolutional classification network. It handles the convolutions or mutation of images and comes pre-packaged with SimpleClassifier, a k-nearest neighbor classifier that is optimized to work with the module
+
+# Installation
+
+	pip install SimpleFilter
+
 # Example
 
 ![Alt text](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/test.PNG "test.py")
@@ -38,12 +46,8 @@
 	flat2 = sf.flat(conv2)
 
 	result = sf.euc(flat1,flat2) # This performs an Euclidean distance calculation on the flattened convolutions to determine how close they are to one another, the smaller the number the closer they are and the higher chance that they are similar
-
-
-
-SimpleFilter v.1.0 Documentation
-
-SimpleFilter is a module that provides the tools necessary to build a convolutional classification network. It handles the convolutions or mutation of images and comes pre-packaged with SimpleClassifier, a k-nearest neighbor classifier that is optimized to work with the module
+	
+# SimpleFilter Functions
 
 SimpleFilter.create(size, outer=-0.1, inner=1, rand=0)
 	Creates a size x size array, mainly used to create basic filters which can then be styled using the SimpleFilter.style function
