@@ -55,7 +55,8 @@ Installing through pip will also install all dependencies, however if for some r
 # SimpleFilter Functions
 
 <b>SimpleFilter.<i>create</b>(size, outer=-0.1, inner=1, rand=0)</i>
-	Creates a size x size array, mainly used to create basic filters which can then be styled using the SimpleFilter.style function
+
+Creates a size x size array, mainly used to create basic filters which can then be styled using the SimpleFilter.style function
 -	Size: Size of the filter [size x size]
 -	Outer: Integer of all except the middle cell
 -	Inner: Integer of middle cell
