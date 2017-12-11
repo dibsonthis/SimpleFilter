@@ -46,6 +46,8 @@ SimpleFilter is a module that provides the tools necessary to build a convolutio
 	flat2 = sf.flat(conv2)
 
 	result = sf.euc(flat1,flat2) # This performs an Euclidean distance calculation on the flattened convolutions to determine how close they are to one another, the smaller the number the closer they are and the higher chance that they are similar
+	
+# SimpleFilter Functions
 
 SimpleFilter.create(size, outer=-0.1, inner=1, rand=0)
 	Creates a size x size array, mainly used to create basic filters which can then be styled using the SimpleFilter.style function
