@@ -244,7 +244,9 @@ Installing through pip will also install all dependencies, however if for some r
 		
 		conv = sf.cycle(image, simple_filters, 4) 
 		
-		# This convolutes the image 4 times for each filter in simple_filters 								(simple_filters consists of four filters; horizontal line, vertical line, right 							diagonal line, left diagonal line) and plots all the images once complete
+		# This convolutes the image 4 times for each filter in simple_filters
+		(simple_filters consists of four filters; horizontal line, vertical line, right
+		diagonal line, left diagonal line) and plots all the images once complete
 		
 
 ## <b>SimpleFilter.<i>style</b>(filter, front=1, back=-0.1, x=None, y=None, s=None, n= False)</i>
