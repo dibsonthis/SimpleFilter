@@ -159,25 +159,56 @@ Installing through pip will also install all dependencies, however if for some r
 			     [1,1,1]]
 	
 
-<b>SimpleFilter.<i>conv</b>(array, filter)</i>
+## <b>SimpleFilter.<i>conv</b>(array, filter)</i>
 
-Runs a single convolution on an image using a provided filter. This function is used as the basis of the mutations performed in the SimpleFilter.mut function
+### Runs a single convolution on an image using a provided filter. This function is used as the basis of the mutations performed in the SimpleFilter.mut function
 -	Array: Image array to be convoluted
 -	Filter: Filter to be used for convolution
 
-<b>SimpleFilter.<i>pool</b>(array)</i>
+		image = sf.load(path/to/image,[200,200])
+		
+		filter = sf.create(5)
 
-Performs a max pooling function of size=2 and stride=2 on an image reducing it to half its original size
+		conv = sf.conv(image,filter) # Performs a single convolution
+
+## <b>SimpleFilter.<i>pool</b>(array)</i>
+
+### Performs a max pooling function of size=2 and stride=2 on an image reducing it to half its original size
 -	Array: Array to be pooled
+	
+		image = sf.load(path/to/image,[200,200])
+		
+			>>> len(image)
+			>>> 400
+			
+		sf.pool(image)
+		
+			>>> len(image)
+			>>> 200
+		
 
-<b>SimpleFilter.<i>rectlin</b>(array)</i>
+## <b>SimpleFilter.<i>rectlin</b>(array)</i>
 
-Performs a rectilinear function on each cell in the image, changing all negative numbers into 0 whilst keeping any other number unchanged
+### Performs a rectilinear function on each cell in the image, changing all negative numbers into 0 whilst keeping any other number unchanged
 -	Array: Array for which a rectilinear layer will be applied
 
-<b>SimpleFilter.<i>mut</b>(array, filter, levels=1, plot=False, plotall=False, col=’Greys_r’, rand=[-0.1,1], r=False, pool=False, rectlin=False)</i>
+		image = sf.load(path/to/image,[3,3])
+		
+			>>> image
+			>>> [[1,234,50],
+			     [-23,0,-133],
+			     [54,21,7]]
+		
+		sf.reclin(image)
+		
+			>>> image
+			>>> [[1,234,50],
+			     [0,0,0],
+			     [54,21,7]]
 
-Mut stands for mutation and is a SimpleFilter vernacular for multilayered convolution. It uses the SimpleFilter.conv function to perform multiple convolutions or mutation on an image using a single provided filter
+## <b>SimpleFilter.<i>mut</b>(array, filter, levels=1, plot=False, plotall=False, col=’Greys_r’, rand=[-0.1,1], r=False, pool=False, rectlin=False)</i>
+
+### Mut stands for mutation and is a SimpleFilter vernacular for multilayered convolution. It uses the SimpleFilter.conv function to perform multiple convolutions or mutation on an image using a single provided filter
 -	Array: Array to be mutated
 -	Filter: Filter to be used for mutation
 -	Levels: Levels of mutation
@@ -189,9 +220,16 @@ Mut stands for mutation and is a SimpleFilter vernacular for multilayered convol
 -	Pool: Applies a pooling layer after every convolution
 -	Rectlin: Applies a Rectilinear layer after every convolution
 
-<b>SimpleFilter.<i>cycle</b>(array, filters, levels=1, pool=True, rectlin=True, col='Greys_r', plot=False, plotall=True, flat=False)</i>
+		image = sf.load(path/to/image,[200,200])
+		filter = sf.create(3)
+		
+		mutation = sf.mut(image,filter,4,pool=True,reclin=True) # Performs 4 convolutions on image
+									  using filter while also applying pooling
+									  and rectlin on each convolution
+
+## <b>SimpleFilter.<i>cycle</b>(array, filters, levels=1, pool=True, rectlin=True, col='Greys_r', plot=False, plotall=True, flat=False)</i>
 	
-Cycles through a list of provided filters and performs multiple convolutions on or mutates an image using each filter and returns a list of arrays (images)
+### Cycles through a list of provided filters and performs multiple convolutions on or mutates an image using each filter and returns a list of arrays (images)
 -	Array: Array to be cycled
 -	Filters: Accepts a list of filters to cycle through
 -	Levels: Number of mutations per filter
@@ -201,6 +239,10 @@ Cycles through a list of provided filters and performs multiple convolutions on 
 -	Plot: If True, plots final mutation
 -	Plotall: If True, plots all mutations
 -	Flat: If True, returns a flattened list that can be used in the SimpleFilter.euc function
+
+		image = sf.load(path/to/image,[200,200])
+		
+		conv = sf.cycle(image, simple_filters, 4) # This convolutes the image 4 times for each filter in simple_filters 								(simple_filters consists of four filters; horizontal line, vertical line, right 							diagonal line, left diagonal line) and plots all the images once complete
 
 <b>SimpleFilter.<i>style</b>(filter, front=1, back=-0.1, x=None, y=None, s=None, n= False)</i>
 	
