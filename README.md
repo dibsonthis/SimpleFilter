@@ -54,40 +54,110 @@ Installing through pip will also install all dependencies, however if for some r
 	
 # SimpleFilter Functions
 
-<b>SimpleFilter.<i>create</b>(size, outer=-0.1, inner=1, rand=0)</i>
+## <b>SimpleFilter.<i>create</b>(size, outer=-0.1, inner=1, rand=0)</i>
 
-Creates a size x size array, mainly used to create basic filters which can then be styled using the SimpleFilter.style function
+### Creates a size x size array, mainly used to create basic filters which can then be styled using the SimpleFilter.style function
 -	Size: Size of the filter [size x size]
--	Outer: Integer of all except the middle cell
--	Inner: Integer of middle cell
+-	Outer: Value of all except the middle cell
+-	Inner: Value of middle cell
 -	Rand: Accepts list of integers to randomize cells
 
-<b>SimpleFilter.<i>load</b>(fpath, size=None, filter=False, convert=’L’)</i>
+		f = sf.create(5) # creates a 5x5 kernel with outer cell value of -0.1 and inner cell value of 1
+		
+			>>> f
+			
+			>>> [[-0.1,-0.1,-0.1,-0.1,-0.1],
+			     [-0.1,-0.1,-0.1,-0.1,-0.1],
+			     [-0.1,-0.1, 1,  -0.1,-0.1],
+			     [-0.1,-0.1,-0.1,-0.1,-0.1],
+			     [-0.1,-0.1,-0.1,-0.1,-0.1]]
 	
-Loads an image of any type using the PIL module and transforms it into an array that the SimpleFilter class can work with. Can also load images to be used as filters. Resizing images on load time will increase efficiency and speed of convolutions
+		f = sf.create(3,rand=[1,2,3,4]) # creates a 3x3 kernel with cells of random value taken from rand list
+		
+			>>> f
+			
+			>>> [[3,2,2],
+			     [1,3,1],
+			     [4,3,3]]
+
+## <b>SimpleFilter.<i>load</b>(fpath, size=None, filter=False, convert=’L’)</i>
+	
+### Loads an image of any type using the PIL module and transforms it into an array that the SimpleFilter class can work with. Can also load images to be used as filters. Resizing images on load time will increase efficiency and speed of convolutions
 -	Fpath: Image file path
 -	Size: Accepts a list of width and height [w,h]. None loads image in actual size
 -	Filter: When True replaces all cells of value 255 with 1 and all cells of value 0 with -1
 -	Convert: Accepts PIL conversion type. ‘1’ loads image in black (255) and white (0)
+		
+		image = sf.load(path/to/image,[200,200]) # This loads an image at size 200x200 px
+		
+		filter = sf.load(path/to/image,[3,3],filter=True) # This loads a 3x3 image and converts
+								   it to be used as a kernel
 
-<b>SimpleFilter<i>.randomize</b>(filter, rand=[-0.1,1])</i>
+## <b>SimpleFilter<i>.randomize</b>(filter, rand=[-0.1,1])</i>
 
-Randomizes a filter using a list of integers. Rand lists are not limited to two numbers, however convolution with filters that have varying numbers may yield odd results
+### Randomizes a filter using a list of integers. Rand lists are not limited to two numbers, however convolution with filters that have varying numbers may yield odd results
 -	Filter: Filter to be randomized
--	Rand: Accepts list of integers to randomize cells
+-	Rand: Accepts list of ints or floats to randomize cells
 
-<b>SimpleFilter.<i>prep</b>(array, filter, pad=0)</i>
+		f = sf.create(3)
+		
+		sf.randomize(f,[1,3,6.3,0.7])
+		
+			>>> f
+			
+			>>> [[3,0.7,1],
+			     [1,6.3,1],
+			     [4,3,0.7]]
 
-Prepares an image to be convoluted or mutated by padding all four sides of the array with any number provided. The padding is calculated based on each filter and thus larger filters will create a large amount of padding which will increase computation time
+## <b>SimpleFilter.<i>prep</b>(array, filter, pad=0)</i>
+
+### Prepares an image to be convoluted or mutated by padding all four sides of the array with any number provided. The padding is calculated based on each filter and thus larger filters will create a large amount of padding which will increase computation time
 -	Array: Image array to be padded
 -	Filter: Padding is created relative to the filter size
 -	Pad: Integer that the padding is made of
 
-<b>SimpleFilter.<i>unprep</b>(array,filter)</i>
+		image = sf.load(path/to/image,[3,3])
+		
+			>>> image
+			
+			>>> [[1,1,1],
+			     [1,1,1],
+			     [1,1,1]]
+			 
+		filter = sf.create(3)
+		
+		sf.prep(image,filter)
+		
+			>>> image
+			
+			>>> [[0,0,0,0,0],
+			     [0,1,1,1,0],
+			     [0,1,1,1,0],
+			     [0,1,1,1,0],
+			     [0,0,0,0,0]]
 
-Removes the padding from an image that has been fed through the SimpleFilter.prep function. Always make sure to unprep an image using the same filter that was used to prep it, otherwise the unprep function could distort or crop the image unintentionally
+## <b>SimpleFilter.<i>unprep</b>(array,filter)</i>
+
+### Removes the padding from an image that has been fed through the SimpleFilter.prep function. Always make sure to unprep an image using the same filter that was used to prep it, otherwise the unprep function could distort or crop the image unintentionally
 -	Array: Image array to be unpadded
 -	Filter: Padding is removed relative to the filter size
+		
+			>>> image
+			
+			>>> [[0,0,0,0,0],
+			     [0,1,1,1,0],
+			     [0,1,1,1,0],
+			     [0,1,1,1,0],
+			     [0,0,0,0,0]]
+			     
+		sf.unprep(image,filter)
+		
+			>>> image
+			
+			>>> [[1,1,1],
+			     [1,1,1],
+			     [1,1,1]]
+	
 
 <b>SimpleFilter.<i>conv</b>(array, filter)</i>
 
