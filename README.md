@@ -242,11 +242,14 @@ Installing through pip will also install all dependencies, however if for some r
 
 		image = sf.load(path/to/image,[200,200])
 		
-		conv = sf.cycle(image, simple_filters, 4) # This convolutes the image 4 times for each filter in simple_filters 								(simple_filters consists of four filters; horizontal line, vertical line, right 							diagonal line, left diagonal line) and plots all the images once complete
+		conv = sf.cycle(image, simple_filters, 4) 
+		
+		# This convolutes the image 4 times for each filter in simple_filters 								(simple_filters consists of four filters; horizontal line, vertical line, right 							diagonal line, left diagonal line) and plots all the images once complete
+		
 
-<b>SimpleFilter.<i>style</b>(filter, front=1, back=-0.1, x=None, y=None, s=None, n= False)</i>
+## <b>SimpleFilter.<i>style</b>(filter, front=1, back=-0.1, x=None, y=None, s=None, n= False)</i>
 	
-Allows basic styling of a created filter or array. Mainly used to create basic filters such as horizontal lines, vertical lines and diagonal lines. A filter can go through the style function numerous times and if n is False, will append each style to the existing styled filter
+### Allows basic styling of a created filter or array. Mainly used to create basic filters such as horizontal lines, vertical lines and diagonal lines. A filter can go through the style function numerous times and if n is False, will append each style to the existing styled filter
 -	Filter: Filter to be styled
 -	Front: Integer to be applied to the styled areas
 -	Back: Integer to be applied to the non-styled areas
@@ -255,16 +258,119 @@ Allows basic styling of a created filter or array. Mainly used to create basic f
 -	S: Special function, allows the creation of diagonal filters using the keywords ‘rl’ for right to left diagonal or ‘lr’ for left to right diagonal
 -	N: If True, replaces all the cells in the filter with the back variable before styling to ensure a blank slate
 
-<b>SimpleFilter.<i>flat</b>(conv_layers)</i>
+		filter = sf.create(3)
+		
+			>>> filter
+		
+			>>> [[-0.1,-0.1,-0.1],
+			     [-0.1, 1,  -0.1],
+			     [-0.1,-0.1,-0.1]]
+			     
+		sf.style(filter,x=[0,2],n=True) # Clears cell of any styling and fills the kernal horizontally from rows 0 to 1
+		
+			>>> filter
+			
+			>>> [[1, 1, 1],
+			     [1, 1, 1],
+			     [-0.1, -0.1, -0.1]]
+			     
+		sf.style(filter,y=[1,2],n=True) # Clears cell of any styling and fills the kernal vertically from rows 1 to 2
+		
+			>>> filter
+			
+			>>> [[-0.1, 1, -0.1],
+			     [-0.1, 1, -0.1],
+			     [-0.1, 1, -0.1]]
+			     
+		sf.style(filter,s="lr",n=True) # Clears cell of any styling and fills the kernal diagonally from left to right
+		
+			>>> filter
+			
+			>>> [[1, -0.1, -0.1],
+			     [-0.1, 1, -0.1],
+			     [-0.1, -0.1, 1]]
+			     
+		sf.style(filter,x=[0,1],y=[1,2],s="rl",n=True) # Multiple stylings can be done at once
+		
+			>>> filter
+			
+			>>> [[1, 1, 1],
+			     [-0.1, 1, -0.1],
+			     [1, 1, -0.1]]
+		
+## <b>SimpleFilter.<i>flat</b>(conv_layers)</i>
 
-Flattens a list of images into a single list of features to be used in the SimpleFilter.euc function
+### Flattens a list of images into a single list of features to be used in the SimpleFilter.euc function
 -	Conv_layers: A list of images (arrays) returned by the SimpleFilter.cycle function
 
-<b>SimpleFilter.<i>euc</b>(a, b)</i>
+		image1 = sf.create(5)
+		image2 = sf.create(5)
+		image3 = sf.create(5)
+		
+		images = [image1, image2, image3] # Flat function takes in a list of list of lists
+		
+			>>> images
+			
+			>>> [[[-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, 1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1]], 
+			      
+			     [[-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, 1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1]],
+			      
+			     [[-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, 1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1],
+			      [-0.1, -0.1, -0.1, -0.1, -0.1]]]
+			      
+		flat = sf.flat(images)
+		
+			>>> flat
+			
+			>>> [-0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, 1, -0.1, -0.1,
+			     -0.1,-0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, 1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1, 
+			     -0.1, -0.1, 1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1,
+			     -0.1, -0.1, -0.1, -0.1, -0.1]
+		
+
+## <b>SimpleFilter.<i>euc</b>(a, b)</i>
 	
-Performs Euclidean distance calculation on two flattened arrays (lists) to determine the degree of closeness
+### Performs Euclidean distance calculation on two flattened arrays (lists) to determine the degree of closeness
 -	A: List 1
 -	B: List 2
+
+		image1 = sf.create(3,rand=[4,5,6])
+		image1 = sf.flat([image1]) # Flat function only takes in a list of list of lists
+		
+		image2 = sf.create(3,rand=[7,8,9])
+		image2 = sf.flat([image2])
+		
+		result = sf.euc(image1, image2) # Performs Euclidean distance calculation
+		
+			>>> result
+			
+			>>> 9.848857801796104
+			
+## <b>simple_filters:</b> A list of four 3x3 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
+
+## <b>simple_filters5x5:</b> A list of four 5x5 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
 
 # SimpleClassifier Documentation
 
@@ -282,7 +388,3 @@ Captures the training features and their corresponding labels
 	
 Performs a prediction using the SimpleFilter.euc function to determine which label closest fits the test image
 -	Test: Image to perform the prediction test on
-
-<b>simple_filters:</b> A list of four 3x3 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
-
-<b>simple_filters5x5:</b> A list of four 5x5 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
