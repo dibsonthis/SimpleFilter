@@ -370,9 +370,13 @@ Installing through pip will also install all dependencies, however if for some r
 			
 			>>> 9.848857801796104
 			
-## <b>simple_filters:</b> A list of four 3x3 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
+## <b>simple_filters:</b> 
 
-## <b>simple_filters5x5:</b> A list of four 5x5 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
+#### A list of four 3x3 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
+
+## <b>simple_filters5x5:</b> 
+
+#### A list of four 5x5 kernels or filters (horizontal line, vertical line, right diagonal, left diagonal). To be used with sf.cycle()
 
 # SimpleClassifier Documentation
 
