@@ -1,4 +1,4 @@
-<img src="https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/logo.png" width="650" height="150" align="middle">
+<img src="https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/logo.png" width="700" height="150" align="middle">
 
 #
 
