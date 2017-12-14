@@ -6,6 +6,17 @@
 
 SimpleFilter is a <b>Python 3 module</b> that provides the tools necessary to build a convolutional classification network. It handles the convolutions or mutation of images and comes pre-packaged with SimpleClassifier, a k-nearest neighbor classifier that is optimized to work with the module
 
+## Features:
+
+- Easily create and style kernels/filters of any size
+- Easily load images locally or from the web of any size
+- Load images locally or from the web and convert them to kernels
+- Convolute images using a single kernel or cycle through a list of kernels
+- Configure your convolutions to suit your needs (pooling, rectlin, number of convolutions etc.)
+- Easily compare convoluted images using Euclidean distance
+- Comes pre-packaged with a k-nearest neighbors classifier for simple classification machine learning
+- As the name suggests, SimpleFilter is, well...<i>simple<i/>.
+
 # Installation
 
 	pip install SimpleFilter
