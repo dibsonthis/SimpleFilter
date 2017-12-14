@@ -1,4 +1,6 @@
-![Alt text](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/logo.png "test.py")
+<img src="https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/logo.png" width="650" height="150" align="middle">
+
+#
 
 # SimpleFilter v.1.3 Documentation
 
