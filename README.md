@@ -10,7 +10,7 @@ SimpleFilter is a <b>Python 3 module</b> that provides the tools necessary to bu
 
 	pip install SimpleFilter
 
-# Example
+# Example (Read below for in depth explanation)
 
 ![Alt text](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/test.PNG "test.py")
 
