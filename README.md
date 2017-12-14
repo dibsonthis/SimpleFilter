@@ -15,7 +15,7 @@ SimpleFilter is a <b>Python 3 module</b> that provides the tools necessary to bu
 - Configure your convolutions to suit your needs (pooling, rectlin, number of convolutions etc.)
 - Easily compare convoluted images using Euclidean distance
 - Comes pre-packaged with a k-nearest neighbors classifier for simple classification machine learning
-- As the name suggests, SimpleFilter is, well...<i>simple<i/>.
+- As the name suggests, SimpleFilter is, well...<i>simple</i>.
 
 # Installation
 
