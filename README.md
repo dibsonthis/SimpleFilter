@@ -1,3 +1,5 @@
+![Alt text](https://github.com/dibsonthis/SimpleFilter/blob/master/SimpleFilter/Images/logo.png "test.py")
+
 # SimpleFilter v.1.3 Documentation
 
 SimpleFilter is a <b>Python 3 module</b> that provides the tools necessary to build a convolutional classification network. It handles the convolutions or mutation of images and comes pre-packaged with SimpleClassifier, a k-nearest neighbor classifier that is optimized to work with the module
