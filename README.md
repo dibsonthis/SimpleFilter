@@ -161,13 +161,15 @@ Installing through pip will also install all dependencies, however if for some r
 
 ## <b>SimpleFilter.<i>conv</b>(array, filter)</i>
 
-### Runs a single convolution on an image using a provided filter. This function is used as the basis of the mutations performed in the SimpleFilter.mut function
+### Runs a single convolution on an image using a provided filter. This function is used as the basis of the mutations performed in the SimpleFilter.mut function. Important: Conv does NOT prep/unprep images automatically
 -	Array: Image array to be convoluted
 -	Filter: Filter to be used for convolution
 
 		image = sf.load(path/to/image,[200,200])
 		
 		filter = sf.create(5)
+		
+		sf.prep(image,filter) # This is a crucial step as the conv function does not prep/unprep automatically
 
 		conv = sf.conv(image,filter) # Performs a single convolution
 
@@ -208,7 +210,7 @@ Installing through pip will also install all dependencies, however if for some r
 
 ## <b>SimpleFilter.<i>mut</b>(array, filter, levels=1, plot=False, plotall=False, col=’Greys_r’, rand=[-0.1,1], r=False, pool=False, rectlin=False)</i>
 
-### Mut stands for mutation and is a SimpleFilter vernacular for multilayered convolution. It uses the SimpleFilter.conv function to perform multiple convolutions or mutation on an image using a single provided filter
+### Mut stands for mutation and is a SimpleFilter vernacular for multilayered convolution. It uses the SimpleFilter.conv function to perform multiple convolutions or mutation on an image using a single provided filter. Important: Mut preps/unpreps images automatically
 -	Array: Array to be mutated
 -	Filter: Filter to be used for mutation
 -	Levels: Levels of mutation
@@ -229,7 +231,7 @@ Installing through pip will also install all dependencies, however if for some r
 
 ## <b>SimpleFilter.<i>cycle</b>(array, filters, levels=1, pool=True, rectlin=True, col='Greys_r', plot=False, plotall=True, flat=False)</i>
 	
-### Cycles through a list of provided filters and performs multiple convolutions on or mutates an image using each filter and returns a list of arrays (images)
+### Cycles through a list of provided filters and performs multiple convolutions on or mutates an image using each filter and returns a list of arrays (images). Important: Cycle preps/unpreps images automatically
 -	Array: Array to be cycled
 -	Filters: Accepts a list of filters to cycle through
 -	Levels: Number of mutations per filter
