@@ -31,7 +31,7 @@ class SimpleFilter():
         return filt
 
     @staticmethod
-    def load(fpath,size=None,filter=False,convert='L'):
+    def load(fpath,size=None,filter=False,convert='L',comp=True):
 
         if 'http://' in fpath or 'https://' in fpath or 'www.' in fpath:
             response = requests.get(fpath)
@@ -54,7 +54,9 @@ class SimpleFilter():
                 elif cell == 255:
                     image[index] = 1
 
-        image = [image[i:i + test_img.size[0]] for i in range(0, len(image), test_img.size[0])]
+        if comp == True:
+
+            image = [image[i:i + test_img.size[0]] for i in range(0, len(image), test_img.size[0])]
 
         return image
 
@@ -181,6 +183,24 @@ class SimpleFilter():
                 if cell < 0:
                     array[index][indx] = 0
         return array
+
+    def cull(self,array,factor=-1,length=10):
+        count = []
+        index = 0
+        for i,v in enumerate(array):
+                count.append(array.count(v))
+        for i,v in enumerate(count):
+                if v == max(count):
+                        index = i
+                        break
+        array = [x if x not in range(array[index]-length,array[index]+length) else factor for x in array]
+        return array
+
+    def cull_all(self,array,factor=-1,length=10):
+        array_cull = array[:]
+        for i,v in enumerate(array_cull):
+            array_cull[i] = sf.cull(array_cull[i],factor,length)
+        return array_cull
 
     def style(self,filter,front=1,back=-0.1,x=None,y=None,s=None,n=False):
         if n==True:
